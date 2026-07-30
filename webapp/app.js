@@ -1,6 +1,6 @@
 // ==== НАСТРОЙКИ — заполни своими значениями после создания репозитория ====
 const CONFIG = {
-  GH_OWNER: "your-github-username",
+  GH_OWNER: "lol-kil",
   GH_REPO: "pc-marketplace-bot",
   GH_BRANCH: "main",
 };
