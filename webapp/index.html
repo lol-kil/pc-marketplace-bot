@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Комплектующие</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__pin"></span>
+      <h1>Комплектующие</h1>
+    </div>
+    <button id="cartBtn" class="iconbtn" aria-label="Корзина">
+      🛒 <span id="cartCount" class="badge">0</span>
+    </button>
+  </header>
+
+  <main id="categoryList" class="categories"></main>
+
+  <template id="categoryTpl">
+    <section class="category">
+      <button class="category__head">
+        <span class="category__title"></span>
+        <span class="category__chev">▾</span>
+      </button>
+      <div class="category__body">
+        <div class="product-grid"></div>
+        <button class="admin-add-product ghostbtn" hidden>+ Добавить товар</button>
+      </div>
+    </section>
+  </template>
+
+  <template id="productChipTpl">
+    <button class="product-chip">
+      <span class="product-chip__brand"></span>
+      <span class="product-chip__name"></span>
+      <span class="product-chip__price"></span>
+    </button>
+  </template>
+
+  <!-- Карточка товара (модальное окно) -->
+  <div id="productModal" class="modal" hidden>
+    <div class="modal__sheet">
+      <button id="modalClose" class="modal__close" aria-label="Закрыть">✕</button>
+      <div id="modalImageWrap" class="modal__image"></div>
+      <div class="modal__body">
+        <p id="modalBrand" class="modal__brand"></p>
+        <h2 id="modalName" class="modal__name"></h2>
+        <p id="modalPrice" class="modal__price"></p>
+        <p id="modalDesc" class="modal__desc"></p>
+        <div class="modal__actions">
+          <button id="likeBtn" class="actionbtn actionbtn--ghost">♡ В избранное</button>
+          <button id="cartAddBtn" class="actionbtn actionbtn--primary">В корзину</button>
+        </div>
+        <div id="adminControls" class="admin-controls" hidden>
+          <button id="editProductBtn" class="ghostbtn">Редактировать</button>
+          <button id="deleteProductBtn" class="ghostbtn ghostbtn--danger">Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Корзина / оформление заказа -->
+  <div id="cartModal" class="modal" hidden>
+    <div class="modal__sheet">
+      <button id="cartClose" class="modal__close" aria-label="Закрыть">✕</button>
+      <h2 class="modal__name">Корзина</h2>
+      <div id="cartItems" class="cart-items"></div>
+
+      <form id="checkoutForm" class="checkout-form">
+        <label>Имя<input required name="name" type="text" placeholder="Как к вам обращаться"></label>
+        <label>Телефон<input required name="phone" type="tel" placeholder="+998 ..."></label>
+        <label>Адрес<input required name="address" type="text" placeholder="Город, улица, дом"></label>
+        <label>Комментарий (необязательно)<textarea name="comment" placeholder="Пожелания к заказу"></textarea></label>
+        <button type="submit" class="actionbtn actionbtn--primary actionbtn--full">Оформить заказ</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Форма добавления/редактирования товара (только админ) -->
+  <div id="productFormModal" class="modal" hidden>
+    <div class="modal__sheet">
+      <button id="productFormClose" class="modal__close" aria-label="Закрыть">✕</button>
+      <h2 class="modal__name" id="productFormTitle">Новый товар</h2>
+      <form id="productForm" class="checkout-form">
+        <label>Бренд<input required name="brand" type="text"></label>
+        <label>Название<input required name="name" type="text"></label>
+        <label>Цена (сум)<input required name="price" type="number" min="0"></label>
+        <label>Краткое описание характеристик<textarea required name="description"></textarea></label>
+        <label>Фото<input name="image" type="file" accept="image/*"></label>
+        <button type="submit" class="actionbtn actionbtn--primary actionbtn--full">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Форма новой категории (только админ) -->
+  <div id="categoryFormModal" class="modal" hidden>
+    <div class="modal__sheet">
+      <button id="categoryFormClose" class="modal__close" aria-label="Закрыть">✕</button>
+      <h2 class="modal__name">Новый раздел</h2>
+      <form id="categoryForm" class="checkout-form">
+        <label>Название раздела<input required name="title" type="text"></label>
+        <button type="submit" class="actionbtn actionbtn--primary actionbtn--full">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <button id="addCategoryBtn" class="fab" hidden>+ Раздел</button>
+
+  <script src="app.js"></script>
+</body>
+</html>

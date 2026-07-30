@@ -1,0 +1,44 @@
+{
+  "categories": [
+    {
+      "id": "cpu",
+      "title": "Процессоры",
+      "products": []
+    },
+    {
+      "id": "gpu",
+      "title": "Видеокарты",
+      "products": []
+    },
+    {
+      "id": "motherboard",
+      "title": "Материнские платы",
+      "products": []
+    },
+    {
+      "id": "ram",
+      "title": "Оперативная память",
+      "products": []
+    },
+    {
+      "id": "psu",
+      "title": "Блоки питания",
+      "products": []
+    },
+    {
+      "id": "case",
+      "title": "Корпуса",
+      "products": []
+    },
+    {
+      "id": "storage",
+      "title": "Накопители",
+      "products": []
+    },
+    {
+      "id": "cooling",
+      "title": "Охлаждение",
+      "products": []
+    }
+  ]
+}

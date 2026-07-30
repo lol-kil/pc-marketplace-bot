@@ -1,0 +1,9 @@
+{
+  "name": "pc-marketplace-bot",
+  "version": "1.0.0",
+  "private": true,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "poll": "node bot/poll.js"
+  }
+}
